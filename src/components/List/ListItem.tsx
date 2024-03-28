@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Item } from '../../types/dataTypes';
 import styled from 'styled-components';
 
@@ -6,7 +7,7 @@ interface Props {
     item: Item;
 }
 
-const StyledListItem = styled.li`
+const StyledListItem = styled(Link)`
   display: flex;
   flex-direction: column;
   width: 15em;
@@ -41,7 +42,7 @@ const SubWrapper = styled.div`
 
 const ListItem: React.FC<Props> = ({ item }) => {
     return (
-        <StyledListItem>
+        <StyledListItem to={`/city/${item.name}`}>
             <h3>{ item.name }</h3>
             <div>
                 <h4>{item.country}</h4>

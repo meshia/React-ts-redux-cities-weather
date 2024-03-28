@@ -1,11 +1,18 @@
 import React from 'react';
-import ListContainer from './containers/ListContainer';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import DetailsPage from './pages/Details';
 
 function App() {
   return (
     <div className="App">
-      <ListContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/city/:name" Component={DetailsPage} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

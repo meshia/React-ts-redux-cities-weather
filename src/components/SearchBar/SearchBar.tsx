@@ -1,14 +1,24 @@
 import React from 'react';
-import { Item } from '../../types/dataTypes';
+import styled from 'styled-components';
 
-interface Props {
-    items: Item[];
+interface SearchBarProps {
+    value: string;
+    onChange: (value: string) => void;
 }
 
-const SearchBar: React.FC<Props> = ({ items }) => {
-    return (
-        <div></div>
-    )
+const Input = styled.input`
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChange(event.target.value);
+    };
+
+    return <Input type="text" placeholder="Search..." value={value} onChange={handleChange} />
 }
 
 export default SearchBar;

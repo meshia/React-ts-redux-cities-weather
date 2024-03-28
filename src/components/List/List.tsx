@@ -1,18 +1,27 @@
 import React from 'react';
+import ListItem from './ListItem';
 import { Item } from '../../types/dataTypes';
+import styled from 'styled-components';
 
 interface Props {
     items: Item[];
 }
 
+const StyledList = styled.ul`
+    display:flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    padding: 0;
+`;
+
 const List: React.FC<Props> = ({ items }) => {
     return (
-        <ul>
+        <StyledList>
             {Object.values(items).map((item) =>{
                 return(
-                <li key={`${item.name}-${item.country}`}>{item.name}</li>
+                <ListItem key={`${item.name}-${item.country}`} item={item} />
             )})}
-        </ul>
+        </StyledList>
     )
 }
 

@@ -2,13 +2,13 @@ import React from 'react';
 import { Item } from '../../types/dataTypes';
 
 interface Props {
-    item: Item;
+    items: Item[];
 }
 
-const ListItem: React.FC<Props> = ({ item }) => {
+const FilterOptions: React.FC<Props> = ({ items }) => {
     return (
         <div></div>
     )
 }
 
-export default ListItem;
+export default FilterOptions;

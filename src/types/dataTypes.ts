@@ -1,11 +1,10 @@
 import { Country, Continent } from './enums';
 
-interface Coords {
+export interface Coords {
     lat: number,
     lng: number
 }
-
-interface Item {
+export interface Item {
     name: string,
     continent: Continent,
     active: boolean,

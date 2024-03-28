@@ -10,19 +10,25 @@ interface Props {
 const StyledListItem = styled(Link)`
   display: flex;
   flex-direction: column;
-  width: 15em;
-  border: 1px solid;
-  border-radius: 2em;
-  padding: 0.5em;
-  margin: 0.5em;
   align-items: center;
   justify-content: center;
+  width: 15em;
+  padding: 0;
+  margin: 2em;
+  border-radius: 2em;
   cursor: pointer;
-  h3, h4 {
+  color: var(--primer-color);
+  box-shadow: 0 -.5em 0 .3em var(--primer-color);
+  transition: box-shadow ease 0.2s;
+  h3, h4, h5 {
     margin: 0.4em;
+    font-weight: 200;
   }
   div {
     display: flex;
+  }
+  &:hover {
+    box-shadow: 0 0 0 .5em var(--primer-color);
   }
 `;
 
@@ -43,7 +49,7 @@ const SubWrapper = styled.div`
 const ListItem: React.FC<Props> = ({ item }) => {
     return (
         <StyledListItem to={`/city/${item.name}`}>
-            <h3>{ item.name }</h3>
+            <h3>{ item.name.toUpperCase() }</h3>
             <div>
                 <h4>{item.country}</h4>
                 <h4>{item.continent}</h4>

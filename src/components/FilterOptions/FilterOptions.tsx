@@ -1,8 +1,8 @@
 import React from 'react';
-import { Item } from '../../types/dataTypes';
+import { City } from '../../types/dataTypes';
 
 interface Props {
-    items: Item[];
+    items: City[];
 }
 
 const FilterOptions: React.FC<Props> = ({ items }) => {

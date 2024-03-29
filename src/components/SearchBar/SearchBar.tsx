@@ -7,9 +7,15 @@ interface SearchBarProps {
 }
 
 const Input = styled.input`
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    width: 50%;
+    height: 1.5em;
+    padding: 0.5em;
+    border: 1px solid var(--primer-color);
+    border-radius: 2em;
+    font-size: 1.2em;
+    &:focus-visible {
+        color: var(--primer-color);
+    }
 `;
 
 const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {

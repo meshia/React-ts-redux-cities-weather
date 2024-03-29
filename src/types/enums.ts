@@ -58,3 +58,9 @@ export enum Country {
     // Y
     // Z
 }
+
+export enum ActionType {
+  SET_CITIES = 'SET_CITIES',
+  SELECT_CITY = 'SELECT_CITY',
+  SEARCH_CITIES = 'SEARCH_CITIES',
+}

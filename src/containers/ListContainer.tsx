@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/reducers';
+import { setCities } from '../redux/actions';
 import List from '../components/List/List';
 import { fetchCities } from '../services/dataService';
-import { Item } from '../types/dataTypes';
 
 const ListContainer: React.FC = () => {
-    const [ items, setItems ] = useState<Item[]>([]);
+    const dispatch = useDispatch();
+    const cities = useSelector((state: RootState) => state.cities.filteredCities);
 
     useEffect(()=> {
         const getData = async () => {
@@ -19,12 +22,12 @@ const ListContainer: React.FC = () => {
                     return true;
                 }
             });
-            setItems(uniqueFiltered); 
+            dispatch(setCities(uniqueFiltered));
         }
         getData();
     }, []);
 
-    return <List items={items} />
+    return <List items={cities} />
 };
 
 export default ListContainer;

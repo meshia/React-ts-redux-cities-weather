@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Item } from '../types/dataTypes';
+import { City } from '../types/dataTypes';
 
 const DetailsPage: React.FC = () => {
     const { name } = useParams<{name: string}>();

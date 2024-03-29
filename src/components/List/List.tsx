@@ -1,16 +1,16 @@
 import React from 'react';
 import ListItem from './ListItem';
-import { Item } from '../../types/dataTypes';
+import { City } from '../../types/dataTypes';
 import styled from 'styled-components';
 
 interface Props {
-    items: Item[];
+    items: City[];
 }
 
 const StyledList = styled.ul`
     display:flex;
+    justify-content:center;
     flex-flow: row wrap;
-    list-style-type: none;
     padding: 0;
 `;
 

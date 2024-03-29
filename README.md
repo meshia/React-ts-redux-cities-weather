@@ -1,4 +1,4 @@
-# React Cities and Weather
+# Cities and Weather
 ### React - TypeScript - Redux - Styled-Components
 #### Created By Meshi 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

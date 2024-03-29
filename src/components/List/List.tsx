@@ -12,6 +12,7 @@ const StyledList = styled.ul`
     justify-content:center;
     flex-flow: row wrap;
     padding: 0;
+    width: 100%;
 `;
 
 const List: React.FC<Props> = ({ items }) => {

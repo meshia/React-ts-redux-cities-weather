@@ -6,8 +6,8 @@ export const setCities = (cities: City[]): CityAction => ({
     payload: cities,
 });
 
-export const sortByCity = (sortBy = "city"): CityAction => ({
-    type: ActionType.SORT_BY_CITY,
+export const sortBy = (sortBy:string = "city"): CityAction => ({
+    type: ActionType.SORT_BY,
     payload: sortBy,
 });
 

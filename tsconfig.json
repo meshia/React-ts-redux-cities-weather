@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "es2015",
     "lib": [
+      "ES2023.Array",
       "dom",
       "dom.iterable",
-      "esnext"
+      "ES2023"
     ],
     "allowJs": true,
     "skipLibCheck": true,

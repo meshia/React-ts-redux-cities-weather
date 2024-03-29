@@ -32,10 +32,16 @@ interface SearchCitiesAction {
     [key: string]: any;
 }
 
+interface SortByCityAction {
+    type: typeof ActionType.SORT_BY_CITY;
+    payload: string;
+    [key: string]: any;
+}
+
 interface SelectCityAction {
     type: typeof ActionType.SELECT_CITY;
     payload: City;
     [key: string]: any;
-  }
+}
 
-export type CityAction = SetCitiesAction | SearchCitiesAction | SelectCityAction;
+export type CityAction = SetCitiesAction | SearchCitiesAction | SortByCityAction | SelectCityAction;

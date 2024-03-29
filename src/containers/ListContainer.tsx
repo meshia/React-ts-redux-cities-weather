@@ -7,7 +7,7 @@ import { fetchCities } from '../services/dataService';
 
 const ListContainer: React.FC = () => {
     const dispatch = useDispatch();
-    const cities = useSelector((state: RootState) => state.cities.filteredCities);
+    const filteredCities = useSelector((state: RootState) => state.cities.filteredCities);
 
     useEffect(()=> {
         const getData = async () => {
@@ -27,7 +27,14 @@ const ListContainer: React.FC = () => {
         getData();
     }, []);
 
-    return <List items={cities} />
+    return (
+        <>
+            { filteredCities.length > 0 
+                ? <List items={filteredCities} />
+                : <h3>No Results Found...</h3>
+            }
+        </>
+    )
 };
 
 export default ListContainer;

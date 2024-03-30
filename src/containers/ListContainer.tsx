@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/reducers';
 import { setCities } from '../redux/actions';
 import List from '../components/List/List';
-import { fetchCities } from '../services/dataService';
+import { fetchCities } from '../services/citiesService';
 
 const ListContainer: React.FC = () => {
     const dispatch = useDispatch();

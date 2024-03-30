@@ -8,7 +8,6 @@ const StyledDataDisplay = styled.div`
   align-items: center;
   padding: 0.4em 0;
   margin: 2em;
-  height: 100%;
   border-radius: 2em;
   color: var(--primer-color);
   box-shadow: 0 -.5em 0 .3em var(--primer-color);

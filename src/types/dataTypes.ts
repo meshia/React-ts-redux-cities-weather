@@ -14,6 +14,22 @@ export interface City {
     coords: Coords
 }
 
+export interface WeatherInfo {
+    main: {
+        feels_like: number,
+        humidity: number,
+        pressure: number,
+        temp: number,
+        temp_max: number,
+        temp_min: number,
+    }
+    wind: {
+        deg: number,
+        speed: number,
+    }
+    description: string,
+}
+
 export interface CityState {
     cities: City[];
     filteredCities: City[];

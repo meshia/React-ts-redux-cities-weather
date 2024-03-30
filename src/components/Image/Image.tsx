@@ -7,6 +7,7 @@ interface Props {
 }
 
 const ImageWrapper = styled.div`
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -21,7 +22,7 @@ const ImageWrapper = styled.div`
 
 const Image: React.FC<Props> = ({ label, imageUrl }) => {
     return (
-        <ImageWrapper>
+        <ImageWrapper className='image-wrapper'>
             { imageUrl && <img src={imageUrl} alt={label} /> }
         </ImageWrapper>
     )

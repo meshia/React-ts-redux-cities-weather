@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Image from '../components/Image/Image';
 import DisplayData from '../components/DisplayInfo/DisplayData';
+import DisplayWeatherContainer from '../containers/DisplayWeatherContainer';
 import styled from 'styled-components';
 
 const StyledBackLink = styled(Link)`
@@ -21,12 +22,18 @@ const StyledBackLink = styled(Link)`
 
 const StyledContainer = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-flow: column wrap;
   width: 100%;
-  height: auto;
+  height: 80vh;
   div {
     width:45%;
+  }
+  .image-wrapper {
+    height: 100%;
+    img {
+      width: auto;
+      height: 100%;
+    }
   }
 `;
 
@@ -40,6 +47,7 @@ const DetailsPage: React.FC = () => {
             <StyledBackLink to={`/`}><h4>{`< Back To List`}</h4></StyledBackLink>
             <StyledContainer>
               <DisplayData item={selectedCity} />
+              <DisplayWeatherContainer item={selectedCity} />
               <Image imageUrl={selectedCity?.image} label={ selectedCity?.name} />
             </StyledContainer>
         </div>

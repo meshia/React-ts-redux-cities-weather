@@ -15,15 +15,12 @@ const initialState: CityState = {
 export const citiesReducer: Reducer<CityState, CityAction> = (state = initialState, action: CityAction) => {
     switch (action.type) {
         case ActionType.SET_CITIES:
-            console.log("SET_CITIES")
             return {...state, cities: action.payload, filteredCities: action.payload};
         case ActionType.SET_CURRENT_LOCATION:
-            console.log("SET_CURRENT_LOCATION")
             return {...state, currentCoords: action.payload};
         case ActionType.SELECT_CITY:
             return { ...state, selectedCity: action.payload };
         case ActionType.SEARCH_CITIES:
-            console.log("SEARCH_CITIES")
             const filteredCities = state.cities.filter( city => 
               city.name.toLowerCase().includes((action.payload).toLocaleLowerCase()) || // search by city name
               city.country.toLowerCase().includes((action.payload).toLocaleLowerCase()) // search by country name

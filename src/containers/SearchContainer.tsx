@@ -9,7 +9,6 @@ const SearchContainer: React.FC = () => {
     const searchValue = useSelector((state: RootState) => state.cities.searchValue);
 
     useEffect(() => {
-        console.log("searchValue", searchValue);
         if(searchValue.length > 0) {
             dispatch(searchCities(searchValue));
         }

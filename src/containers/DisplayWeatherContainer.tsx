@@ -10,8 +10,6 @@ const DisplayWeatherContainer: React.FC<{item:City | null}> = ({item}) => {
         if(item) {
             const getData = async () => {
                 const fetchedData = await fetchWeather(item.coords); // fetch data from service
-                console.log("fetchedData", typeof fetchedData ,fetchedData);
-                
                 setWeatherInfo(fetchedData);
             }
             getData();

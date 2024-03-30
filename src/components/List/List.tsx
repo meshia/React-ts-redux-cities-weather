@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './ListItem';
+import ListItemContainer from '../../containers/ListItemContainer';
 import { City } from '../../types/dataTypes';
 import styled from 'styled-components';
 
@@ -20,7 +20,7 @@ const List: React.FC<Props> = ({ items }) => {
         <StyledList>
             {Object.values(items).map((item) =>{
                 return(
-                <ListItem key={`${item.name}-${item.country}`} item={item} />
+                <ListItemContainer key={`${item.name}-${item.country}`} item={item} />
             )})}
         </StyledList>
     )

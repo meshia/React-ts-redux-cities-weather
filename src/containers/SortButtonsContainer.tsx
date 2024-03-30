@@ -1,8 +1,7 @@
 import React from 'react';
 import Button from '../components/Button/Button';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../redux/reducers';
+import { useDispatch } from 'react-redux';
 import { sortBy } from '../redux/actions';
 
 const StyledButtonContainer = styled.div`
@@ -14,7 +13,6 @@ const StyledButtonContainer = styled.div`
 
 const SortButtonsContainer: React.FC = () => {
     const dispatch = useDispatch();
-    const sortedCities = useSelector((state: RootState) => state.cities.filteredCities);
 
     const handleSortByName = () => {
         dispatch(sortBy("city"))

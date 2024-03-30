@@ -25,9 +25,7 @@ const StyledButton = styled.button`
   }
 `;
 
-
 const Button: React.FC<Props> = ({ label, onClick }) => {
-
     return (
         <StyledButton onClick={ onClick }>
             { label }

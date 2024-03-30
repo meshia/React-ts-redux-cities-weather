@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { City } from '../../types/dataTypes';
 import styled from 'styled-components';
+import Image from '../Image/Image';
 
 interface Props {
     item: City;
+    onClick: () => void;
 }
 
-const StyledListCity = styled(Link)`
+const StyledListCity = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,32 +33,16 @@ const StyledListCity = styled(Link)`
   }
 `;
 
-const SubWrapper = styled.div`
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 10em;
-    overflow: hidden;
-    border-radius: 2em;
-    img {
-        width: 100%;
-        height: auto;
-    }
-`;
-
-
-const ListItem: React.FC<Props> = ({ item }) => {
+const ListItem: React.FC<Props> = ({ item, onClick }) => {
     return (
-        <StyledListCity to={`/city/${item.name}`}>
+        <StyledListCity onClick={onClick}>
             <h3>{ item.name }</h3>
             <div>
                 <h4>{item.country}</h4>
                 <h4>{item.continent}</h4>
             </div>
             <p>{item.description}</p>
-            <SubWrapper>
-                { item.image && <img src={item.image} alt={item.name} /> }
-            </SubWrapper>
+            { item.image && <Image label={item.name} imageUrl={item.image} /> }
         </StyledListCity>
     )
 }

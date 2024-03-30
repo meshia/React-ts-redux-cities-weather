@@ -5,7 +5,6 @@ import { calculateDistance } from '../utils/calculations';
 import getCurrentLocation, { defaultCoords } from '../services/currentLocationService';
 
 const currentLocation: Coords = {...defaultCoords};
-
 const initialState: CityState = {
     cities: [],
     filteredCities: [],

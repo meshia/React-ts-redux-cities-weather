@@ -6,6 +6,11 @@ export const setCities = (cities: City[]): CityAction => ({
     payload: cities,
 });
 
+export const selectCity = (city: City): CityAction => ({
+    type: ActionType.SELECT_CITY,
+    payload: city,
+});
+
 export const sortBy = (sortBy:string = "city"): CityAction => ({
     type: ActionType.SORT_BY,
     payload: sortBy,

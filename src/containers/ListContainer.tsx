@@ -10,21 +10,23 @@ const ListContainer: React.FC = () => {
     const filteredCities = useSelector((state: RootState) => state.cities.filteredCities);
 
     useEffect(()=> {
-        const getData = async () => {
-            const fetchedData = await fetchCities(); // fetch data from service
-            const uniqueMap: Map<string, boolean> = new Map();
-            const uniqueFiltered = fetchedData.filter((item) => { 
-                if(!item.active) return false; // filter out not active items
-                if(uniqueMap.has(item.name)) { // filter out duplicates
-                    return false;
-                } else {
-                    uniqueMap.set(item.name, true);
-                    return true;
-                }
-            });
-            dispatch(setCities(uniqueFiltered));
+        if(filteredCities.length === 0) {
+            const getData = async () => {
+                const fetchedData = await fetchCities(); // fetch data from service
+                const uniqueMap: Map<string, boolean> = new Map();
+                const uniqueFiltered = fetchedData.filter((item) => { 
+                    if(!item.active) return false; // filter out not active items
+                    if(uniqueMap.has(item.name)) { // filter out duplicates
+                        return false;
+                    } else {
+                        uniqueMap.set(item.name, true);
+                        return true;
+                    }
+                });
+                dispatch(setCities(uniqueFiltered));
+            }
+            getData();
         }
-        getData();
     }, []);
 
     return (

@@ -34,14 +34,10 @@ const DetailsPage: React.FC = () => {
     const { name } = useParams<{name: string}>();
     const selectedCity = useSelector((state: RootState) => state.cities.selectedCity);
 
-    useEffect(() => {
-      console.log('selectedCity', selectedCity)
-    },[selectedCity])
-
     return (
         <div className='details-page'>
             <h2>{ name }</h2>
-            <StyledBackLink to={`/`}><h3>{`< Back To List`}</h3></StyledBackLink>
+            <StyledBackLink to={`/`}><h4>{`< Back To List`}</h4></StyledBackLink>
             <StyledContainer>
               <DisplayData item={selectedCity} />
               <Image imageUrl={selectedCity?.image} label={ selectedCity?.name} />

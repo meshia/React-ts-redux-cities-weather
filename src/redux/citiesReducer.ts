@@ -8,6 +8,7 @@ const currentLocation: Coords = {...defaultCoords};
 const initialState: CityState = {
     cities: [],
     filteredCities: [],
+    searchValue: "",
     selectedCity: null,
 }
 
@@ -28,17 +29,19 @@ fetchLocation().then((res) => {
 export const citiesReducer: Reducer<CityState, CityAction> = (state = initialState, action: CityAction) => {
     switch (action.type) {
         case ActionType.SET_CITIES:
+            console.log("SET_CITIES")
             return {...state, cities: action.payload, filteredCities: action.payload};
         case ActionType.SELECT_CITY:
             return { ...state, selectedCity: action.payload };
         case ActionType.SEARCH_CITIES:
+            console.log("SEARCH_CITIES")
             const filteredCities = state.cities.filter( city => 
               city.name.toLowerCase().includes((action.payload).toLocaleLowerCase()) || // search by city name
               city.country.toLowerCase().includes((action.payload).toLocaleLowerCase()) // search by country name
             );
-            return {...state, filteredCities};
+            return {...state, filteredCities:filteredCities, searchValue: action.payload };
         case ActionType.SORT_BY:
-            const sortededCities = state.cities.toSorted((cityA:City, cityB:City) => {
+            const sortededCities = state.filteredCities.toSorted((cityA:City, cityB:City) => {
                 if(action.payload === "distance") {
                     const distanceA = calculateDistance(cityA.coords.lat, cityA.coords.lng, currentLocation.lat, currentLocation.lng);
                     const distanceB = calculateDistance(cityB.coords.lat, cityB.coords.lng, currentLocation.lat, currentLocation.lng);

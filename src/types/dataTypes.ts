@@ -18,6 +18,7 @@ export interface CityState {
     cities: City[];
     filteredCities: City[];
     selectedCity: City | null;
+    searchValue: string;
 }
 
 interface SetCitiesAction {

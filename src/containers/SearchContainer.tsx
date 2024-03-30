@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/reducers';
 import { searchCities } from '../redux/actions';
 import SearchBar from '../components/SearchBar/SearchBar';
 
 const SearchContainer: React.FC = () => {
-    const [searchValue, setSearchValue] = useState<string>("");
     const dispatch = useDispatch();
+    const searchValue = useSelector((state: RootState) => state.cities.searchValue);
+
+    useEffect(() => {
+        console.log("searchValue", searchValue);
+        if(searchValue.length > 0) {
+            dispatch(searchCities(searchValue));
+        }
+    },[]);
 
     const handleSearchChange = (value: string) => {
-        setSearchValue(value);
         dispatch(searchCities(value));
     }
     return <SearchBar value={searchValue} onChange={handleSearchChange} />

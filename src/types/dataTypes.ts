@@ -35,11 +35,17 @@ export interface CityState {
     filteredCities: City[];
     selectedCity: City | null;
     searchValue: string;
+    currentCoords: Coords;
 }
 
 interface SetCitiesAction {
     type: typeof ActionType.SET_CITIES;
     payload: City[];
+    [key: string]: any;
+}
+interface SetCurrentLocationsAction {
+    type: typeof ActionType.SET_CURRENT_LOCATION;
+    payload: Coords;
     [key: string]: any;
 }
 
@@ -61,4 +67,4 @@ interface SelectCityAction {
     [key: string]: any;
 }
 
-export type CityAction = SetCitiesAction | SearchCitiesAction | SortByAction | SelectCityAction;
+export type CityAction = SetCitiesAction | SearchCitiesAction | SortByAction | SelectCityAction | SetCurrentLocationsAction;

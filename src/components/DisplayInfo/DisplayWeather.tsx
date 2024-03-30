@@ -10,6 +10,7 @@ const StyledDataDisplay = styled.div`
   margin: 2em;
   border-radius: 2em;
   color: var(--primer-color);
+  background-color: var(--secondary-color);
   box-shadow: 0 -.5em 0 .3em var(--primer-color);
   transition: box-shadow ease 0.2s;
   div {

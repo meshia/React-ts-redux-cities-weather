@@ -1,36 +1,25 @@
 import { Reducer } from 'redux';
-import { CityAction, CityState, City, Coords } from '../types/dataTypes';
+import { CityAction, CityState, City } from '../types/dataTypes';
 import { ActionType } from '../types/enums';
 import { calculateDistance } from '../utils/calculations';
-import getCurrentLocation, { defaultCoords } from '../services/currentLocationService';
+import { defaultCoords } from '../services/currentLocationService';
 
-const currentLocation: Coords = {...defaultCoords};
 const initialState: CityState = {
     cities: [],
     filteredCities: [],
     searchValue: "",
     selectedCity: null,
+    currentCoords: defaultCoords,
 }
-
-const fetchLocation = async () => {
-    try {
-      const { lat, lng } = await getCurrentLocation();
-      return ({ lat, lng });
-    } catch (error) {
-      return defaultCoords;
-    }
-};
-
-fetchLocation().then((res) => {
-    currentLocation.lat = res.lat;
-    currentLocation.lng = res.lng;
-})
 
 export const citiesReducer: Reducer<CityState, CityAction> = (state = initialState, action: CityAction) => {
     switch (action.type) {
         case ActionType.SET_CITIES:
             console.log("SET_CITIES")
             return {...state, cities: action.payload, filteredCities: action.payload};
+        case ActionType.SET_CURRENT_LOCATION:
+            console.log("SET_CURRENT_LOCATION")
+            return {...state, currentCoords: action.payload};
         case ActionType.SELECT_CITY:
             return { ...state, selectedCity: action.payload };
         case ActionType.SEARCH_CITIES:
@@ -43,8 +32,8 @@ export const citiesReducer: Reducer<CityState, CityAction> = (state = initialSta
         case ActionType.SORT_BY:
             const sortededCities = state.filteredCities.toSorted((cityA:City, cityB:City) => {
                 if(action.payload === "distance") {
-                    const distanceA = calculateDistance(cityA.coords.lat, cityA.coords.lng, currentLocation.lat, currentLocation.lng);
-                    const distanceB = calculateDistance(cityB.coords.lat, cityB.coords.lng, currentLocation.lat, currentLocation.lng);
+                    const distanceA = calculateDistance(cityA.coords.lat, cityA.coords.lng, state.currentCoords.lat, state.currentCoords.lng);
+                    const distanceB = calculateDistance(cityB.coords.lat, cityB.coords.lng, state.currentCoords.lat, state.currentCoords.lng);
                     return distanceA <  distanceB ? -1 : 1;
                 } else {
                     return cityA.name.toLowerCase() < cityB.name.toLowerCase() ? -1 : 1

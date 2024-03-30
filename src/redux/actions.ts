@@ -1,9 +1,14 @@
-import { City, CityAction } from '../types/dataTypes';
+import { City, CityAction, Coords } from '../types/dataTypes';
 import { ActionType } from '../types/enums';
 
 export const setCities = (cities: City[]): CityAction => ({
     type: ActionType.SET_CITIES,
     payload: cities,
+});
+
+export const SetCurrentLocations = (currentCoords: Coords): CityAction => ({
+    type: ActionType.SET_CURRENT_LOCATION,
+    payload: currentCoords,
 });
 
 export const selectCity = (city: City): CityAction => ({

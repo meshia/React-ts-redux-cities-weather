@@ -1,8 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { sortBy, SetCurrentLocations } from '../redux/actions';
 import Button from '../components/Button/Button';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { sortBy } from '../redux/actions';
+import getCurrentLocation, { defaultCoords } from '../services/currentLocationService';
 
 const StyledButtonContainer = styled.div`
   display: flex;
@@ -13,6 +14,19 @@ const StyledButtonContainer = styled.div`
 
 const SortButtonsContainer: React.FC = () => {
     const dispatch = useDispatch();
+
+    const fetchLocation = async () => {
+        try {
+          const { lat, lng } = await getCurrentLocation();
+          return ({ lat, lng });
+        } catch (error) {
+          return defaultCoords;
+        }
+    };
+    
+    fetchLocation().then((res) => {
+        dispatch(SetCurrentLocations(res));
+    })
 
     const handleSortByName = () => {
         dispatch(sortBy("city"))

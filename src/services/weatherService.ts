@@ -1,8 +1,9 @@
 import { Coords, WeatherInfo } from '../types/dataTypes';
 
 export const fetchWeather = async (coords:Coords): Promise<WeatherInfo | null> => {
+    const token = 'f99334eaf77bfe647442003f271e0075';
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=f99334eaf77bfe647442003f271e0075&units=metric`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=${token}&units=metric`);
         if(!response.ok) {
             throw new Error('Failed to fetch data');
         }
